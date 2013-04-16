@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 YAML Multistage Extensions for Capistrano
 =========================================
 
@@ -8,23 +7,14 @@ For more information about the general idea of multistage deployment, see the [d
 
 ## Installation
 
-<<<<<<< HEAD
 1.  Install the **capistrano-multiyaml** gem using RubyGems, Bundler, or your preferred system.
 2.  Modify your `Capfile` or `deploy.rb` to set a few variables and include the gem:
+
         set :stages, %w(integration staging production)
         set :default_stage, "staging"
         set :multiyaml_stages, "config/stages.yaml"`
-=======
-1. Install the **capistrano-multiyaml** gem using RubyGems, Bundler, or your preferred system.
-2. Modify your `Capfile` or `deploy.rb` to set a few variables and include the gem:
-   ```ruby
-   set :stages, %w(integration staging production)
-   set :default_stage, "staging"
-   set :multiyaml_stages, "config/stages.yaml"`
-   ```
->>>>>>> 6bdad4a... Fixining a few errors in README file
 
-**Note:** `:default_stage` is optional, and `:multiyaml_stages` only needs to be set if you are using a location other than `config/stages.yaml`.
+    **Note:** `:default_stage` is optional, and `:multiyaml_stages` only needs to be set if you are using a location other than `config/stages.yaml`.
 
 ## Configure Stages
 
@@ -83,9 +73,3 @@ Prefix deploy actions with the name of the stage, i.e. `cap production TASK`.  I
 ## Caveats
 
 * Don't name your stage "stage", as this is a reserved word under the multistage extension (deploys won't do anything and in fact it will cause an infinite loop).
-=======
-capistrano-multiyaml
-====================
-
-Capistrano plugin for storing multistage configuration in a YAML file.
->>>>>>> c61d612... Initial commit
