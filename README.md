@@ -13,6 +13,8 @@ For more information about the general idea of multistage deployment, see the [d
         set :stages, %w(integration staging production)
         set :default_stage, "staging"
         set :multiyaml_stages, "config/stages.yaml"`
+        
+        load 'capistrano-multiyaml'
 
     **Note:** `:default_stage` is optional, and `:multiyaml_stages` only needs to be set if you are using a location other than `config/stages.yaml`.
 
@@ -73,3 +75,8 @@ Prefix deploy actions with the name of the stage, i.e. `cap production TASK`.  I
 ## Caveats
 
 * Don't name your stage "stage", as this is a reserved word under the multistage extension (deploys won't do anything and in fact it will cause an infinite loop).
+
+## Inspiration
+
+* [Jamis Buck's original](https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension)
+* [Lee Hambly's alternative](https://github.com/leehambley/capistrano-yaml-multistage)
