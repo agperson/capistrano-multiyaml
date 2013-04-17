@@ -58,11 +58,12 @@ Capistrano::Configuration.instance.load do
         when "roles"
           contents.each do |rolename, hosts|
             hosts.each do |hostname, options|
+              hostname = String.interpolate{hostname.to_s}
               logger.info "Processing host settings for #{hostname} (#{name})"
               if options.is_a?(Hash) then
-                role(rolename.to_sym, String.interpolate{hostname.to_s}, options)
+                role(rolename.to_sym, hostname.to_s, options)
               else
-                role(rolename.to_sym, String.interpolate{hostname.to_s})
+                role(rolename.to_sym, hostname.to_s)
               end
             end
           end

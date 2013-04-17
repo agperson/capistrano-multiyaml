@@ -72,10 +72,6 @@ production:
 
 Prefix deploy actions with the name of the stage, i.e. `cap production TASK`.  If you do not set a stage and `default_stage` is set, it will be used instead.
 
-## Caveats
-
-* Don't name your stage "stage", as this is a reserved word under the multistage extension (deploys won't do anything and in fact it will cause an infinite loop).
-
 ## Inspiration
 
 * [Jamis Buck's original](https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension)
