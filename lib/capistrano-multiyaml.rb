@@ -37,6 +37,7 @@ Capistrano::Configuration.instance.load do
       config.each do |section, contents|
         case section.to_s
 
+        # Set variables first so they can be used in roles if necessary.
         when "variables"
           contents.each do |key, value|
             if key.is_a?(Symbol) and not value.nil? then
@@ -59,9 +60,9 @@ Capistrano::Configuration.instance.load do
             hosts.each do |hostname, options|
               logger.info "Processing host settings for #{hostname} (#{name})"
               if options.is_a?(Hash) then
-                role(rolename.to_sym, hostname.to_s, options)
+                role(rolename.to_sym, String.interpolate{hostname.to_s}, options)
               else
-                role(rolename.to_sym, hostname.to_s)
+                role(rolename.to_sym, String.interpolate{hostname.to_s})
               end
             end
           end

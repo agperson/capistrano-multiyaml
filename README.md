@@ -14,7 +14,7 @@ For more information about the general idea of multistage deployment, see the [d
         set :default_stage, "staging"
         set :multiyaml_stages, "config/stages.yaml"`
         
-        load 'capistrano-multiyaml'
+        require 'capistrano-multiyaml'
 
     **Note:** `:default_stage` is optional, and `:multiyaml_stages` only needs to be set if you are using a location other than `config/stages.yaml`.
 
@@ -27,11 +27,11 @@ The easiest way to understand the capabilities of the YAML file is to see a comp
 integration:
   roles:
     app:
-      'bobsmith-vm.foocorp.com':
+      '#{`hostname -f`}':
 staging: 
   variables: &vars
     :data_path:    '/nfs/#{application}/#{stage}'
-    :clean_script: '#{deploy_to}/bin/clean-cache.sh'
+    :clean_script: '/usr/local/bin/clean-cache.sh'
   tasks: &tasks
     - type  : after_callback
       target: 'deploy:setup'
@@ -64,7 +64,7 @@ production:
 ```
 
 * Variable keys are symbols
-* Other Capistrano variables can be interpreted within variables
+* Variables and roles are interpolated. It is valid to use other variables within variables and roles, such as the staging data_path variable including the stage and application name, and the development app server role looking up the FQDN of localhost.
 * Tasks can be one of `after_callback` (using the "after" hook) or `before_callback` (using the "before" hook).  Action can be either another task or a code block to be evaluated.
 * Additional parameters can be passed to servers in an array
 
