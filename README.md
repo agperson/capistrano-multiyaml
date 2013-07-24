@@ -28,7 +28,7 @@ integration:
   roles:
     app:
       '#{`hostname -f`}':
-staging: 
+staging:
   variables: &vars
     :data_path:    '/nfs/#{application}/#{stage}'
     :clean_script: '/usr/local/bin/clean-cache.sh'
@@ -39,28 +39,31 @@ staging:
     - type  : before_callback
       target: 'deploy:restart'
       action: 'fooapp:run_scripts'
-  roles: 
+  roles:
     web:
       'lb-stage1.foocorp.com':
     db:
       'sql-stage1.db.foocorp.com':
-    app: 
-      'app-stage1.foocorp.com': { :primary: true }
+    app:
+      'app-stage1.foocorp.com':
+        - :primary: true
       'app-stage2.foocorp.com':
 production:
   variables: *vars
   tasks: *tasks
-  roles: 
+  roles:
     web:
       'lb-prod1.foocorp.com':
       'lb-prod2.foocorp.com':
     db:
       'sql-prod1.db.foocorp.com':
     app:
-      'app-prod1.foocorp.com': { :primary: true }
+      'app-prod1.foocorp.com':
+        - :primary: true
       'app-prod2.foocorp.com':
       'app-prod3.foocorp.com':
-      'app-prod4.foocorp.com': { :read_only: true }
+      'app-prod4.foocorp.com':
+        - :read_only: true
 ```
 
 * Variable keys are symbols

@@ -2,7 +2,7 @@ require 'fileutils'
 require 'yaml'
 
 unless Capistrano::Configuration.respond_to?(:instance)
-  abort "capistrano/multiyaml requires Capistrano 2"
+  abort "capistrano-multiyaml requires Capistrano 2"
 end
 
 
