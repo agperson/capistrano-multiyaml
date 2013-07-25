@@ -17,7 +17,7 @@ Capistrano::Configuration.instance.load do
     yamlfile = YAML.load_file(fetch(:multiyaml_stages, "config/stages.yaml"))
   rescue Errno::ENOENT
     abort "Multistage deployment configuration file missing. Populate config/stages.yaml or set :multiyaml_stages to another location to use capistrano/multiyaml for multistage deployment."
-  rescue Exception => end
+  rescue Exception => e 
     abort "Configuration file load failed with message: #{e.message}."
   end
 
