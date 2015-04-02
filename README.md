@@ -2,6 +2,11 @@ YAML Multistage Extensions for Capistrano
 =========================================
 [![Gem Version](https://badge.fury.io/rb/capistrano-multiyaml.png)](http://badge.fury.io/rb/capistrano-multiyaml)
 
+-----
+**Note:** For Capistrano 3 compatibility please see Oleg Yakovenko's [capistrano3-multiyaml](https://github.com/olegykz/capistrano3-multiyaml) fork.
+
+-----
+
 This extension is an alternative to Jamis Buck's multistage extension for Capistrano that stores multistage configuration in a single YAML file rather than in multiple Ruby files.  It provides a simple and straightforward way to specify variables, callbacks, and roles for different deployment stages, and the file can be manipulated by any script that understands YAML.  Even if the file is only managed by humans, there are still several benefits including centralizing stage/role configuration in one file, discouraging per-stage logic in deference to properly hooked before/after callbacks, and simplified configuration reuse.'
 
 For more information about the general idea of multistage deployment, see the [docs for the original module](https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension/).
